@@ -17,11 +17,13 @@ function HomePage() {
     }
   };
 
-  // TODO: Implement handleDelete logic here
-
   useEffect(() => {
     fetchBooks();
   }, []);
+
+  const handleDelete = (bookId) => {
+    setBooks((prevBooks) => prevBooks.filter((book) => book._id !== bookId));
+  };
 
   return (
     <section>
@@ -37,8 +39,7 @@ function HomePage() {
       ) : (
         <div className="grid">
           {books.map((book) => (
-            <BookCard key={book._id} book={book} />
-            // TODO: pass onDelete prop to BookCard
+            <BookCard key={book._id} book={book} onDelete={handleDelete} />
           ))}
         </div>
       )}
