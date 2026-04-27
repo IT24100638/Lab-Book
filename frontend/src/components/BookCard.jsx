@@ -15,9 +15,10 @@ function BookCard({ book, onDelete }) {
   return (
     <div className="card">
       <img
-        src={book.imageUrl || "https://via.placeholder.com/400x220?text=Book"}
+        src={book.imageUrl || "https://placehold.co/400x220?text=Book"}
         alt={book.title}
         className="card-image"
+        onError={(e) => { e.target.onerror = null; e.target.src = "https://placehold.co/400x220?text=Book"; }}
       />
       <h3>{book.title}</h3>
       <p><strong>Author:</strong> {book.author}</p>
